@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const SpotifyStrategy = require('passport-spotify').Strategy;
+const cors = require('cors'); 
 const axios = require('axios');
 require('dotenv').config();
 
@@ -17,6 +18,8 @@ app.use(session({
 // Inicialização do Passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(cors());
 
 // Configuração da estratégia de autenticação do Passport com o Spotify
 passport.use(new SpotifyStrategy({
